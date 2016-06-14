@@ -1,23 +1,33 @@
 package com.example.dicky.ormlitetest.bean;
 
 import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.misc.BaseDaoEnabled;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.util.Collection;
+
 @DatabaseTable(tableName = "tb_student")
-public class Student extends BaseDaoEnabled<Student, Integer>
+public class Student
 {
 	@DatabaseField(generatedId = true)
 	private int id;
 
 	@DatabaseField
-	private String name;
-	
+	private String name = "ycc";
+	@ForeignCollectionField
+	private Collection<Book> books;
+
 	public Student()
 	{
 	}
 
-	
+	public Collection<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(Collection<Book> books) {
+		this.books = books;
+	}
 
 	public int getId()
 	{
